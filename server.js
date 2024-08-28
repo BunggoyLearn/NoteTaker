@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 const notes = require('./db/db.json');
 
 const app = express();
@@ -34,6 +35,7 @@ app.post('/api/notes', (req, res) => {
     const newPost = {
       title,
       text,
+      id: uuidv4(),
     };
     const response = {
       status: 'success',
